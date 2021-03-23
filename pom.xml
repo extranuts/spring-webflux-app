@@ -14,7 +14,7 @@
 	<name>spring-webflux-app</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>15</java.version>
 		<blockhound.version>1.0.4.RELEASE</blockhound.version>
 		<r2dbc-postgres.version>0.8.2.RELEASE</r2dbc-postgres.version>
 		<reactor-tools.version>3.4.3</reactor-tools.version>
