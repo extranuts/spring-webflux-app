@@ -7,6 +7,7 @@ import my.webfluxapp.springwebfluxapp.domain.Anime;
 import my.webfluxapp.springwebfluxapp.repository.AnimeRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * @author
@@ -23,5 +24,10 @@ public class AnimeService {
 
     public Flux<Anime> findAll() {
         return animeRepository.findAll();
+    }
+
+    public Mono<Anime> findByID(int id){
+        return animeRepository.findById(id)
+                .log();
     }
 }
