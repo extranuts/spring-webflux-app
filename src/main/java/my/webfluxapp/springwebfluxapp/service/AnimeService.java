@@ -30,8 +30,7 @@ public class AnimeService {
 
     public Mono<Anime> findByID(int id){
         return animeRepository.findById(id)
-                .switchIfEmpty(monoResponseStatusException())
-                .log();
+                .switchIfEmpty(monoResponseStatusException());
     }
     public <T> Mono<T> monoResponseStatusException(){
         return Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND, "Anime not Found"));
