@@ -22,7 +22,7 @@ import javax.validation.constraints.NotNull;
 @Table("anime")
 public class Anime {
     @Id
-    private Long id;
+    private Integer id;
     @NotNull
     @NotEmpty(message = "The name of this anime cannot by empty")
     private String name;
