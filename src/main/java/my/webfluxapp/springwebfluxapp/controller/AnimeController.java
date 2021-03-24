@@ -38,7 +38,7 @@ public class AnimeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    private Mono<Anime> save(@Valid @RequestBody Anime anime){
+    Mono<Anime> save(@Valid @RequestBody Anime anime){
         return animeService.save(anime);
     }
 

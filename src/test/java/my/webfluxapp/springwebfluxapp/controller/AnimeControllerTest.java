@@ -47,12 +47,12 @@ class AnimeControllerTest {
 
         BDDMockito.when(animeServiceMock.findByID(ArgumentMatchers.anyInt()))
                 .thenReturn(Mono.just(anime));
-//        BDDMockito.when(animeRepositoryMock.save(AnimeCreator.createAnimeToBeSave()))
-//                .thenReturn(Mono.just(anime));
-//        BDDMockito.when(animeRepositoryMock.delete(ArgumentMatchers.any(Anime.class
-//        ))).thenReturn(Mono.empty());
-//        BDDMockito.when(animeRepositoryMock.save(AnimeCreator.createValidAnime()))
-//                .thenReturn(Mono.empty());
+        BDDMockito.when(animeServiceMock.save(AnimeCreator.createAnimeToBeSave()))
+                .thenReturn(Mono.just(anime));
+        BDDMockito.when(animeServiceMock.delete(ArgumentMatchers.anyInt()))
+        .thenReturn(Mono.empty());
+        BDDMockito.when(animeServiceMock.update(AnimeCreator.createValidAnime()))
+                .thenReturn(Mono.empty());
 
     }
 
@@ -73,8 +73,8 @@ class AnimeControllerTest {
     }
 
     @Test
-    @DisplayName("findAll returns a flux of anime")
-    public void findAll_ReturnFluxAnime_WhenSuccessful() {
+    @DisplayName("listAll returns a flux of anime")
+    public void listAll_ReturnFluxAnime_WhenSuccessful() {
         StepVerifier.create(animeController.listAll())
                 .expectNext(anime)
                 .verifyComplete();
@@ -88,6 +88,37 @@ class AnimeControllerTest {
                 .expectNext(anime)
                 .verifyComplete();
     }
+
+
+    @Test
+    @DisplayName("save creates an anime when successful")
+    public void save_CreateAnime_WhenSuccessful() {
+
+        Anime animeToBeSaved = AnimeCreator.createAnimeToBeSave();
+
+        StepVerifier.create(animeController.save(animeToBeSaved))
+                .expectSubscription()
+                .expectNext(anime)
+                .verifyComplete();
+    }
+    @Test
+    @DisplayName("delete removes a Mono with anime if exists")
+    public void delete_RemovesAnime_WhenSuccessful() {
+        StepVerifier.create(animeController.delete(1))
+                .expectSubscription()
+                .verifyComplete();
+    }
+
+
+    @Test
+    @DisplayName("update save updated anime and returns empty mono when successful")
+    public void update_SaveUpdateAnime_WhenSuccessful() {
+
+        StepVerifier.create(animeServiceMock.update( AnimeCreator.createValidAnime()))
+                .expectSubscription()
+                .verifyComplete();
+    }
+
 
 
 }
