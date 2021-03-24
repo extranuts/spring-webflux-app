@@ -12,7 +12,8 @@ import reactor.core.publisher.Mono;
  */
 
 @Repository
-public interface AnimeRepository extends ReactiveCrudRepository<Anime, Long> {
+public interface AnimeRepository extends
+        ReactiveCrudRepository<Anime, Long> {
 
     Mono<Anime> findById(int id);
 }
