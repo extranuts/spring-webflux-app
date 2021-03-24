@@ -1,8 +1,0 @@
-{
-  "properties": [
-    {
-      "name": "logging.level.org.springframework.data.r2dbc",
-      "type": "java.lang.String",
-      "description": "Description for logging.level.org.springframework.data.r2dbc."
-  }
-] }
